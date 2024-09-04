@@ -1,94 +1,74 @@
-# EX NO :04 Vigenere Cipher
-Vigenere Cipher using with different key values
+# EX NO :05 Rail Fence Cipher
+Rail Fence Cipher using with different key values
 
 ## AIM:
-To develop a simple C program to implement Vigenere Cipher.
+To develop a simple C program to implement Rail Fence Cipher.
 
 ## DESIGN STEPS:
 ### Step 1:
-Design of Vigenere Cipher algorithnm
+Design of Rail Fence Cipher algorithnm
 
 ### Step 2:
 Implementation using C or pyhton code
 
 ### Step 3:
-Testing algorithm with different key values.
+Testing algorithm with different key values. 
 
 ## PROGRAM:
 ```
 ARAVINDAN D
 212223240012
 
-#include <stdio.h>
+#include<stdio.h>
 #include<conio.h>
-#include <ctype.h>
-#include <string.h>
-
-void encipher();
-void decipher();
+#include<string.h>
 int main()
 {
-int choice;
-while(1)
+int i,j,k,l;
+char a[20],c[20],d[20];
+printf("\n\t\t RAIL FENCE TECHNIQUE");
+printf("\n\nEnter the input string : ");
+gets(a);
+l=strlen(a);
+/Ciphering/
+for(i=0,j=0;i<l;i++)
 {
-printf("\n1. Encrypt Text");
-printf("\n2. Decrypt Text");
-printf("\n3. Exit");
-printf("\n\nEnter Your Choice : ");
-scanf("%d",&choice);
-if(choice == 3)
-exit(0);
-else if(choice == 1)
-encipher();
-else if(choice == 2)
-decipher();
+if(i%2==0)
+c[j++]=a[i];
+}
+for(i=0;i<l;i++)
+{
+if(i%2==1)
+c[j++]=a[i];
+}
+c[j]='\0';
+printf("\nCipher text after applying rail fence :");
+printf("\n%s",c);
+/Deciphering/
+if(l%2==0)
+k=l/2;
 else
-printf("Please Enter Valid Option.");
-}
-}
-void encipher()
+k=(l/2)+1;
+for(i=0,j=0;i<k;i++)
 {
-unsigned int i,j;
-char input[50],key[10];
-printf("\n\nEnter Plain Text: ");
-scanf("%s",input);
-printf("\nEnter Key Value: ");
-scanf("%s",key);
-printf("\nResultant Cipher Text: ");
-for(i=0,j=0;i<strlen(input);i++,j++)
-{
-if(j>=strlen(key))
-{ j=0;
+d[j]=c[i];
+j=j+2;
 }
-printf("%c",65+(((toupper(input[i])-65)+(toupper(key[j])-
-65))%26));
-}}
-void decipher()
+for(i=k,j=1;i<l;i++)
 {
-unsigned int i,j;
-char input[50],key[10];
-int value;
-printf("\n\nEnter Cipher Text: ");
-scanf("%s",input);
-printf("\n\nEnter the key value: ");
-scanf("%s",key);
-for(i=0,j=0;i<strlen(input);i++,j++)
-{
-if(j>=strlen(key))
-{ j=0; }
-value = (toupper(input[i])-64)-(toupper(key[j])-64);
-if( value < 0)
-{ value = value * -1;
+d[j]=c[i];
+j=j+2;
 }
-printf("%c",65 + (value % 26));
-}
+d[l]='\0';
+printf("\nText after decryption : ");
+printf("%s",d);
 return 0;
 }
 ```
 
-## OUTPUT :
 
-![image](https://github.com/user-attachments/assets/20c7f8c0-a608-44cc-8afe-3be2a34fe905)
+## OUTPUT: 
+![image](https://github.com/user-attachments/assets/6cca6fc7-aac4-478f-af95-29d15b84542e)
 
 
 ## RESULT:
